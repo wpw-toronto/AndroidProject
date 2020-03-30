@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapEvent"
-    android:id="@+id/drawerMapEvent">
+    android:id="@+id/drawer_schedule_performance">
 
     <include
         android:layout_height="wrap_content"
@@ -21,59 +20,32 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/background">
-
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/categories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Schedule Performance"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:text="Grocery Shop"
-            android:textColor="@android:color/white"
-            android:textColorHighlight="#FFFFFF"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:textStyle="italic"
-            android:textColor="@android:color/white"
-            android:text="Your Orders are here"
-            android:textSize="18sp" />
+            android:textStyle="bold"
+            android:textSize="32sp" />
 
         <ListView
-            android:id="@+id/listOrder"
+            android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@null"
             android:dividerHeight="0dp"
             android:layout_weight="1" />
-
-<!--        <Button-->
-<!--            android:id="@+id/button3"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:background="@color/btnSignActive"-->
-<!--            android:text="Check Out"-->
-<!--            android:onClick="checkOut"/>-->
     </LinearLayout>
-
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/map_event_view"
+        android:id="@+id/navi_schedule_performance"
         app:menu="@menu/draw_menu"
         app:headerLayout="@layout/drawer_header"
         android:layout_gravity="start"

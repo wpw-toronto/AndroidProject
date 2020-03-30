@@ -13,74 +13,73 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class MapEventActivity extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseAuth;
+
+public class Home extends AppCompatActivity {
 
     Toolbar toolbar;
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map_event);
+        setContentView(R.layout.activity_home);
 
         // get the list of stories titles and contents in string array
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        navigationView = findViewById(R.id.map_event_view);
+        navigationView = findViewById(R.id.home_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
                 if(id == R.id.home){
-                    Intent home = new Intent(MapEventActivity.this, MainActivity.class);
+                    Intent home = new Intent(Home.this, MapEvent.class);
                     startActivity(home);
                 }else if(id == R.id.mapEvent){
-                    Intent mapEvent = new Intent(MapEventActivity.this, MainActivity.class);
+                    Intent mapEvent = new Intent(Home.this, MapEvent.class);
                     startActivity(mapEvent);
                 }else if(id == R.id.mapRoute){
-                    Intent mapRoute = new Intent(MapEventActivity.this, MainActivity.class);
+                    Intent mapRoute = new Intent(Home.this, MapRoute.class);
                     startActivity(mapRoute);
                 }
                 else if(id == R.id.scheduleEvent){
-                    Intent scheduleEvent = new Intent(MapEventActivity.this, MainActivity.class);
+                    Intent scheduleEvent = new Intent(Home.this, ScheduleEvent.class);
                     startActivity(scheduleEvent);
                 }
-                else if(id == R.id.schedulePerformace){
-                    Intent schedulePerformace = new Intent(MapEventActivity.this, MainActivity.class);
-                    startActivity(schedulePerformace);
+                else if(id == R.id.schedulePerformance){
+                    Intent schedulePerformance = new Intent(Home.this, SchedulePerformance.class);
+                    startActivity(schedulePerformance);
                 }
                 else if(id == R.id.foodTruck){
-                    Intent foodTruck = new Intent(MapEventActivity.this, MainActivity.class);
+                    Intent foodTruck = new Intent(Home.this, FoodTruck.class);
                     startActivity(foodTruck);
                 }
                 else if(id == R.id.aboutUs){
-                    Intent aboutUs = new Intent(MapEventActivity.this, MainActivity.class);
+                    Intent aboutUs = new Intent(Home.this, AboutUs.class);
                     startActivity(aboutUs);
                 }
                 else if(id == R.id.signOut){
-                    //logout();
+                    logout();
                 }
                 return true;
             }
         });
 
-        drawer = findViewById(R.id.drawerMapEvent);
+        drawer = findViewById(R.id.drawer);
         toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open,R.string.close);
         drawer.addDrawerListener(toggle);
         toggle.setDrawerIndicatorEnabled(true);
         toggle.syncState();
     }
 
-
-
     private void logout() {
-//        FirebaseAuth.getInstance().signOut();
-//
-//        Intent signOut = new Intent(MapEventActivity.this, MainActivity.class);
-//        startActivity(signOut);
-
+        FirebaseAuth.getInstance().signOut();
+        Intent signOut = new Intent(Home.this, MainDisplay.class);
+        startActivity(signOut);
     }
 }

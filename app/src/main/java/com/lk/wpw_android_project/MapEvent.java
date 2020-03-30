@@ -12,66 +12,76 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class MapEvent extends AppCompatActivity {
 
     Toolbar toolbar;
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_map_event);
 
         // get the list of stories titles and contents in string array
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        navigationView = findViewById(R.id.home_view);
+        navigationView = findViewById(R.id.map_event_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
                 if(id == R.id.home){
-                    Intent home = new Intent(MainActivity.this, MapEventActivity.class);
+                    Intent home = new Intent(MapEvent.this, Home.class);
                     startActivity(home);
                 }else if(id == R.id.mapEvent){
-                    Intent mapEvent = new Intent(MainActivity.this, MapEventActivity.class);
+                    Intent mapEvent = new Intent(MapEvent.this, MapEvent.class);
                     startActivity(mapEvent);
                 }else if(id == R.id.mapRoute){
-                    Intent mapRoute = new Intent(MainActivity.this, MapEventActivity.class);
+                    Intent mapRoute = new Intent(MapEvent.this, MapRoute.class);
                     startActivity(mapRoute);
                 }
                 else if(id == R.id.scheduleEvent){
-                    Intent scheduleEvent = new Intent(MainActivity.this, MapEventActivity.class);
+                    Intent scheduleEvent = new Intent(MapEvent.this, ScheduleEvent.class);
                     startActivity(scheduleEvent);
                 }
-                else if(id == R.id.schedulePerformace){
-                    Intent schedulePerformace = new Intent(MainActivity.this, MapEventActivity.class);
-                    startActivity(schedulePerformace);
+                else if(id == R.id.schedulePerformance){
+                    Intent schedulePerformance = new Intent(MapEvent.this, SchedulePerformance.class);
+                    startActivity(schedulePerformance);
                 }
                 else if(id == R.id.foodTruck){
-                    Intent foodTruck = new Intent(MainActivity.this, MapEventActivity.class);
+                    Intent foodTruck = new Intent(MapEvent.this, FoodTruck.class);
                     startActivity(foodTruck);
                 }
                 else if(id == R.id.aboutUs){
-                    Intent aboutUs = new Intent(MainActivity.this, MapEventActivity.class);
+                    Intent aboutUs = new Intent(MapEvent.this, AboutUs.class);
                     startActivity(aboutUs);
                 }
                 else if(id == R.id.signOut){
-                    //logout();
+                    logout();
                 }
                 return true;
             }
         });
 
-        drawer = findViewById(R.id.drawer);
+        drawer = findViewById(R.id.drawerMapEvent);
         toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open,R.string.close);
         drawer.addDrawerListener(toggle);
         toggle.setDrawerIndicatorEnabled(true);
         toggle.syncState();
+    }
+
+
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+
+        Intent signOut = new Intent(MapEvent.this, Home.class);
+        startActivity(signOut);
+
     }
 }

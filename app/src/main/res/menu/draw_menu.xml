@@ -6,7 +6,7 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/home"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/home"
             android:title="Home"/>
 
         <item android:id="@+id/mapEvent"
@@ -21,9 +21,9 @@
             android:icon="@drawable/list"
             android:title="Schedule-Event"/>
 
-        <item android:id="@+id/schedulePerformace"
+        <item android:id="@+id/schedulePerformance"
             android:icon="@drawable/performance"
-            android:title="Schedule-Performace"/>
+            android:title="Schedule-Performance"/>
 
         <item android:id="@+id/foodTruck"
             android:icon="@drawable/pizza"
@@ -38,7 +38,7 @@
             android:title="About Us"/>
 
         <item android:id="@+id/signOut"
-            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:icon="@drawable/sign_out"
             android:title="Sign Out"/>
     </group>
 </menu>

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name"></string>
 
+
+    <string name="slogan">I love grocery shopping when I am home.</string>
+
     <string name="open">open</string>
     <string name="close">close</string>
 </resources>
