@@ -58,34 +58,28 @@ public class ScheduleEvent extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int id = menuItem.getItemId();
-                if(id == R.id.home){
+                final int id = menuItem.getItemId();
+                if (id == R.id.home){
                     Intent home = new Intent(ScheduleEvent.this, Home.class);
                     startActivity(home);
-                }else if(id == R.id.mapEvent){
+                } else if(id == R.id.mapEvent){
                     Intent mapEvent = new Intent(ScheduleEvent.this, MapEvent.class);
                     startActivity(mapEvent);
-                }else if(id == R.id.mapRoute){
+                } else if(id == R.id.mapRoute){
                     Intent mapRoute = new Intent(ScheduleEvent.this, MapRoute.class);
                     startActivity(mapRoute);
-                }
-                else if(id == R.id.scheduleEvent){
-                    Intent scheduleEvent = new Intent(ScheduleEvent.this, ScheduleEvent.class);
-                    startActivity(scheduleEvent);
-                }
-                else if(id == R.id.schedulePerformance){
+                } else if(id == R.id.scheduleEvent){
+                    drawer.closeDrawers();
+                } else if(id == R.id.schedulePerformance){
                     Intent schedulePerformance = new Intent(ScheduleEvent.this, SchedulePerformance.class);
                     startActivity(schedulePerformance);
-                }
-                else if(id == R.id.foodTruck){
+                } else if(id == R.id.foodTruck){
                     Intent foodTruck = new Intent(ScheduleEvent.this, FoodTruck.class);
                     startActivity(foodTruck);
-                }
-                else if(id == R.id.aboutUs){
+                } else if(id == R.id.aboutUs){
                     Intent aboutUs = new Intent(ScheduleEvent.this, AboutUs.class);
                     startActivity(aboutUs);
-                }
-                else if(id == R.id.signOut){
+                } else if(id == R.id.signOut){
                    logout();
                 }
                 return true;
