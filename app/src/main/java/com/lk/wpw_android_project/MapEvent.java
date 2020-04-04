@@ -5,16 +5,31 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.File;
+import java.io.IOException;
 
 public class MapEvent extends AppCompatActivity {
+
+    private Bitmap _image;
+    private FirebaseStorage _storage;
 
     Toolbar toolbar;
     DrawerLayout drawer;
@@ -73,6 +88,30 @@ public class MapEvent extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.setDrawerIndicatorEnabled(true);
         toggle.syncState();
+
+        _storage = FirebaseStorage.getInstance();
+
+        final ImageView imageView = findViewById(R.id.MapEventImage);
+
+        StorageReference ref = _storage.getReference().child("WPW_2020_Site GuideMap.png");
+
+        try {
+            final File localFile = File.createTempFile("Images", "bmp");
+            ref.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    _image = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                    imageView.setImageBitmap(_image);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(MapEvent.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -80,7 +119,7 @@ public class MapEvent extends AppCompatActivity {
     private void logout() {
         FirebaseAuth.getInstance().signOut();
 
-        Intent signOut = new Intent(MapEvent.this, Home.class);
+        Intent signOut = new Intent(MapEvent.this, SignIn.class);
         startActivity(signOut);
 
     }

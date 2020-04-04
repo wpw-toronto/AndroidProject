@@ -27,7 +27,7 @@ import java.io.IOException;
 
 public class MapRoute extends AppCompatActivity {
 
-    private Bitmap _mapRouteImage;
+    private Bitmap _image;
     private FirebaseStorage _storage;
 
     Toolbar toolbar;
@@ -102,8 +102,8 @@ public class MapRoute extends AppCompatActivity {
             ref.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    _mapRouteImage = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                    imageView.setImageBitmap(_mapRouteImage);
+                    _image = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                    imageView.setImageBitmap(_image);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
