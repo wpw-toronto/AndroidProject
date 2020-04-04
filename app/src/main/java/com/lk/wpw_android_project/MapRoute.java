@@ -119,8 +119,7 @@ public class MapRoute extends AppCompatActivity {
     private void logout() {
         FirebaseAuth.getInstance().signOut();
 
-        Intent signOut = new Intent(MapRoute.this, Home.class);
+        Intent signOut = new Intent(MapRoute.this, SignIn.class);
         startActivity(signOut);
-
     }
 }
