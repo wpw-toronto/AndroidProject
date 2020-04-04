@@ -48,53 +48,53 @@ public class FoodTruck extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        navigationView = findViewById(R.id.navi_food_truck);
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                int id = menuItem.getItemId();
-//                if (id == R.id.home){
-//                    Intent home = new Intent(FoodTruck.this, Home.class);
-//                    startActivity(home);
-//                } else if(id == R.id.mapEvent){
-//                    Intent mapEvent = new Intent(FoodTruck.this, MapEvent.class);
-//                    startActivity(mapEvent);
-//                } else if(id == R.id.mapRoute){
-//                    Intent mapRoute = new Intent(FoodTruck.this, MapRoute.class);
-//                    startActivity(mapRoute);
-//                } else if(id == R.id.scheduleEvent){
-//                    Intent scheduleEvent = new Intent(FoodTruck.this, ScheduleEvent.class);
-//                    startActivity(scheduleEvent);
-//                } else if(id == R.id.schedulePerformance){
-//                    Intent schedulePerformance = new Intent(FoodTruck.this, SchedulePerformance.class);
-//                    startActivity(schedulePerformance);
-//                } else if(id == R.id.foodTruck){
-//                    drawer.closeDrawers();
-//                } else if(id == R.id.aboutUs){
-//                    Intent aboutUs = new Intent(FoodTruck.this, AboutUs.class);
-//                    startActivity(aboutUs);
-//                } else if(id == R.id.signOut){
-//                    logout();
-//                }
-//                return true;
-//            }
-//        });
-//
-//
-//        drawer = findViewById(R.id.drawer_food_truck);
-//        toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open,R.string.close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.setDrawerIndicatorEnabled(true);
-//        toggle.syncState();
+        navigationView = findViewById(R.id.navi_food_truck);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                if (id == R.id.home){
+                    Intent home = new Intent(FoodTruck.this, Home.class);
+                    startActivity(home);
+                } else if(id == R.id.mapEvent){
+                    Intent mapEvent = new Intent(FoodTruck.this, MapEvent.class);
+                    startActivity(mapEvent);
+                } else if(id == R.id.mapRoute){
+                    Intent mapRoute = new Intent(FoodTruck.this, MapRoute.class);
+                    startActivity(mapRoute);
+                } else if(id == R.id.scheduleEvent){
+                    Intent scheduleEvent = new Intent(FoodTruck.this, ScheduleEvent.class);
+                    startActivity(scheduleEvent);
+                } else if(id == R.id.schedulePerformance){
+                    Intent schedulePerformance = new Intent(FoodTruck.this, SchedulePerformance.class);
+                    startActivity(schedulePerformance);
+                } else if(id == R.id.foodTruck){
+                    drawer.closeDrawers();
+                } else if(id == R.id.aboutUs){
+                    Intent aboutUs = new Intent(FoodTruck.this, AboutUs.class);
+                    startActivity(aboutUs);
+                } else if(id == R.id.signOut){
+                    logout();
+                }
+                return true;
+            }
+        });
 
-//        listView = (ListView)findViewById(R.id.listView);
-//
-//        Query query = FirebaseDatabase.getInstance().getReference().child("FoodTruck");
 
-//        FirebaseListOptions<SchedulePerformanceList> options = new FirebaseListOptions.Builder<SchedulePerformanceList>()
-//                .setLayout(R.layout.activity_schedule_layout)
-//                .setQuery(query,SchedulePerformanceList.class)
-//                .build();
+        drawer = findViewById(R.id.drawer_food_truck);
+        toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open,R.string.close);
+        drawer.addDrawerListener(toggle);
+        toggle.setDrawerIndicatorEnabled(true);
+        toggle.syncState();
+
+        listView = (ListView)findViewById(R.id.listView);
+
+        Query query = FirebaseDatabase.getInstance().getReference().child("FoodTruck");
+
+        FirebaseListOptions<SchedulePerformanceList> options = new FirebaseListOptions.Builder<SchedulePerformanceList>()
+                .setLayout(R.layout.activity_schedule_layout)
+                .setQuery(query,SchedulePerformanceList.class)
+                .build();
 
 //        adapter = new FirebaseListAdapter(options) {
 //            @RequiresApi(api = Build.VERSION_CODES.N)
@@ -149,12 +149,12 @@ public class FoodTruck extends AppCompatActivity {
 
     public void onStart(){
         super.onStart();
-        adapter.startListening();
+//        adapter.startListening();
     }
 
     public void onStop(){
         super.onStop();
-        adapter.stopListening();
+//        adapter.stopListening();
     }
 
 }
