@@ -92,6 +92,8 @@ public class ScheduleEvent extends AppCompatActivity {
             }
         });
 
+        navigationView.setActivated(false);
+
 
         drawer = findViewById(R.id.drawer_schedule_event);
         toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.open,R.string.close);
@@ -140,6 +142,13 @@ public class ScheduleEvent extends AppCompatActivity {
         };
 
         listView.setAdapter(adapter);
+    }
+
+    // Hide Navigation Drawer on Pause
+    @Override
+    protected void onPause() {
+        drawer.closeDrawers();
+        super.onPause();
     }
 
 

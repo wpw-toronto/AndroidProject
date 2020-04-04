@@ -118,6 +118,14 @@ public class Home extends AppCompatActivity {
         }
     }
 
+    // Hide Navigation Drawer on Pause
+    @Override
+    protected void onPause() {
+        drawer.closeDrawers();
+        super.onPause();
+    }
+
+
     private void logout() {
         FirebaseAuth.getInstance().signOut();
         Intent signOut = new Intent(Home.this, MainDisplay.class);
