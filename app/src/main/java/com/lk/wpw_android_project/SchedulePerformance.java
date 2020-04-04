@@ -139,8 +139,8 @@ public class SchedulePerformance extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
 
         Intent signOut = new Intent(SchedulePerformance.this, MainDisplay.class);
+        signOut.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(signOut);
-
     }
 
     public void onStart(){

@@ -146,9 +146,9 @@ public class ScheduleEvent extends AppCompatActivity {
     private void logout() {
         FirebaseAuth.getInstance().signOut();
 
-        Intent signOut = new Intent(ScheduleEvent.this, Home.class);
+        Intent signOut = new Intent(ScheduleEvent.this, MainDisplay.class);
+        signOut.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(signOut);
-
     }
 
     public void onStart(){

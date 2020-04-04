@@ -119,7 +119,8 @@ public class MapEvent extends AppCompatActivity {
     private void logout() {
         FirebaseAuth.getInstance().signOut();
 
-        Intent signOut = new Intent(MapEvent.this, SignIn.class);
+        Intent signOut = new Intent(MapEvent.this, MainDisplay.class);
+        signOut.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(signOut);
 
     }
