@@ -54,37 +54,30 @@ public class Home extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
-                if(id == R.id.home){
-                    Intent home = new Intent(Home.this, MapEvent.class);
-                    startActivity(home);
-                }else if(id == R.id.mapEvent){
+                if (id == R.id.home){
+                    drawer.closeDrawers();
+                } else if(id == R.id.mapEvent){
                     Intent mapEvent = new Intent(Home.this, MapEvent.class);
                     startActivity(mapEvent);
-                }else if(id == R.id.mapRoute){
+                } else if(id == R.id.mapRoute){
                     Intent mapRoute = new Intent(Home.this, MapRoute.class);
                     startActivity(mapRoute);
-                }
-                else if(id == R.id.scheduleEvent){
+                } else if(id == R.id.scheduleEvent){
                     Intent scheduleEvent = new Intent(Home.this, ScheduleEvent.class);
                     startActivity(scheduleEvent);
-                }
-                else if(id == R.id.schedulePerformance){
+                } else if(id == R.id.schedulePerformance){
                     Intent schedulePerformance = new Intent(Home.this, SchedulePerformance.class);
                     startActivity(schedulePerformance);
-                }
-                else if(id == R.id.foodTruck){
+                } else if(id == R.id.foodTruck){
                     Intent foodTruck = new Intent(Home.this, FoodTruck.class);
                     startActivity(foodTruck);
-                }
-                else if(id == R.id.donate){
+                } else if(id == R.id.donate){
                     Intent donate = new Intent(Home.this, Donate.class);
                     startActivity(donate);
-                }
-                else if(id == R.id.aboutUs){
+                } else if(id == R.id.aboutUs){
                     Intent aboutUs = new Intent(Home.this, AboutUs.class);
                     startActivity(aboutUs);
-                }
-                else if(id == R.id.signOut){
+                } else if(id == R.id.signOut){
                     logout();
                 }
                 return true;
@@ -121,6 +114,14 @@ public class Home extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    // Hide Navigation Drawer on Pause
+    @Override
+    protected void onPause() {
+        drawer.closeDrawers();
+        super.onPause();
+    }
+
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();

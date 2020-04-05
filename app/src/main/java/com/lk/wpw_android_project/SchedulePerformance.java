@@ -51,34 +51,28 @@ public class SchedulePerformance extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int id = menuItem.getItemId();
-                if(id == R.id.home){
+                final int id = menuItem.getItemId();
+                if (id == R.id.home){
                     Intent home = new Intent(SchedulePerformance.this, Home.class);
                     startActivity(home);
-                }else if(id == R.id.mapEvent){
+                } else if(id == R.id.mapEvent){
                     Intent mapEvent = new Intent(SchedulePerformance.this, MapEvent.class);
                     startActivity(mapEvent);
-                }else if(id == R.id.mapRoute){
+                } else if(id == R.id.mapRoute){
                     Intent mapRoute = new Intent(SchedulePerformance.this, MapRoute.class);
                     startActivity(mapRoute);
-                }
-                else if(id == R.id.scheduleEvent){
+                } else if(id == R.id.scheduleEvent){
                     Intent scheduleEvent = new Intent(SchedulePerformance.this, ScheduleEvent.class);
                     startActivity(scheduleEvent);
-                }
-                else if(id == R.id.schedulePerformance){
-                    Intent schedulePerformance = new Intent(SchedulePerformance.this, SchedulePerformance.class);
-                    startActivity(schedulePerformance);
-                }
-                else if(id == R.id.foodTruck){
+                } else if(id == R.id.schedulePerformance){
+                    drawer.closeDrawers();
+                } else if(id == R.id.foodTruck){
                     Intent foodTruck = new Intent(SchedulePerformance.this, FoodTruck.class);
                     startActivity(foodTruck);
-                }
-                else if(id == R.id.aboutUs){
+                } else if(id == R.id.aboutUs){
                     Intent aboutUs = new Intent(SchedulePerformance.this, AboutUs.class);
                     startActivity(aboutUs);
-                }
-                else if(id == R.id.signOut){
+                } else if(id == R.id.signOut){
                     logout();
                 }
                 return true;
@@ -134,6 +128,12 @@ public class SchedulePerformance extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
+    // Hide Navigation Drawer on Pause
+    @Override
+    protected void onPause() {
+        drawer.closeDrawers();
+        super.onPause();
+    }
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();

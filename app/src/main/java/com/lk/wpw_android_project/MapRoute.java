@@ -49,34 +49,28 @@ public class MapRoute extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int id = menuItem.getItemId();
-                if(id == R.id.home){
+                final int id = menuItem.getItemId();
+                if (id == R.id.home){
                     Intent home = new Intent(MapRoute.this, Home.class);
                     startActivity(home);
-                }else if(id == R.id.mapEvent){
+                } else if(id == R.id.mapEvent){
                     Intent mapEvent = new Intent(MapRoute.this, MapEvent.class);
                     startActivity(mapEvent);
-                }else if(id == R.id.mapRoute){
-                    Intent mapRoute = new Intent(MapRoute.this, MapRoute.class);
-                    startActivity(mapRoute);
-                }
-                else if(id == R.id.scheduleEvent){
+                } else if(id == R.id.mapRoute){
+                    drawer.closeDrawers();
+                } else if(id == R.id.scheduleEvent){
                     Intent scheduleEvent = new Intent(MapRoute.this, ScheduleEvent.class);
                     startActivity(scheduleEvent);
-                }
-                else if(id == R.id.schedulePerformance){
+                } else if(id == R.id.schedulePerformance){
                     Intent schedulePerformance = new Intent(MapRoute.this, SchedulePerformance.class);
                     startActivity(schedulePerformance);
-                }
-                else if(id == R.id.foodTruck){
+                } else if(id == R.id.foodTruck){
                     Intent foodTruck = new Intent(MapRoute.this, FoodTruck.class);
                     startActivity(foodTruck);
-                }
-                else if(id == R.id.aboutUs){
+                } else if(id == R.id.aboutUs){
                     Intent aboutUs = new Intent(MapRoute.this, AboutUs.class);
                     startActivity(aboutUs);
-                }
-                else if(id == R.id.signOut){
+                } else if(id == R.id.signOut){
                     logout();
                 }
                 return true;
@@ -114,6 +108,13 @@ public class MapRoute extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // Hide Navigation Drawer on Pause
+    @Override
+    protected void onPause() {
+        drawer.closeDrawers();
+        super.onPause();
     }
 
     private void logout() {
