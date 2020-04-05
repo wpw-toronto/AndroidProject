@@ -8,14 +8,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
@@ -24,10 +22,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.lk.wpw_android_project.Model.SchedulePerformanceList;
+import com.lk.wpw_android_project.Model.FoodTruckList;
+import com.squareup.picasso.Picasso;
 
-import java.text.ParseException;
-import java.util.Date;
 
 public class FoodTruck extends AppCompatActivity {
 
@@ -87,54 +84,40 @@ public class FoodTruck extends AppCompatActivity {
         toggle.setDrawerIndicatorEnabled(true);
         toggle.syncState();
 
-        listView = (ListView)findViewById(R.id.listView);
+        listView = (ListView)findViewById(R.id.listViewFoodTruck);
 
-        Query query = FirebaseDatabase.getInstance().getReference().child("FoodTruck");
+        Query query = FirebaseDatabase.getInstance().getReference().child("Foodtruck");
 
-        FirebaseListOptions<SchedulePerformanceList> options = new FirebaseListOptions.Builder<SchedulePerformanceList>()
-                .setLayout(R.layout.activity_schedule_layout)
-                .setQuery(query,SchedulePerformanceList.class)
+        FirebaseListOptions<FoodTruckList> options = new FirebaseListOptions.Builder<FoodTruckList>()
+                .setLayout(R.layout.list_food_truck)
+                .setQuery(query,FoodTruckList.class)
                 .build();
 
-//        adapter = new FirebaseListAdapter(options) {
-//            @RequiresApi(api = Build.VERSION_CODES.N)
-//            @Override
-//            protected void populateView(View v, Object model, final int position) {
-//                TextView time = v.findViewById(R.id.scheduleTime);
-//                TextView description= v.findViewById(R.id.scheduleDescription);
-//                RelativeLayout relativeLayout = v.findViewById(R.id.scheduleListTime);
-//
-//                final SchedulePerformanceList schedulePerformanceList = (SchedulePerformanceList) model;
-//
-//                // get the current date
-//                Date date = new Date() ;
-//                SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a") ;
-//                dateFormat.format(date);
-//
-//                try {
-//                    // if the time is greater than given time
-//                    if(dateFormat.parse(dateFormat.format(date)).after(dateFormat.parse(schedulePerformanceList.getStartTime())) &&
-//                            dateFormat.parse(dateFormat.format(date)).before(dateFormat.parse(schedulePerformanceList.getEndTime()))
-//                    )
-//                    {
-//                        relativeLayout.setBackgroundColor(Color.parseColor("#6532A8"));
-//                    }
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//                time.setText(schedulePerformanceList.getStartTime() + " - " + schedulePerformanceList.getEndTime());
-//                description.setText(schedulePerformanceList.getDescription());
-//            }
-//        };
-//
-//        listView.setAdapter(adapter);
+        adapter = new FirebaseListAdapter(options) {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            protected void populateView(View v, Object model, final int position) {
+                final FoodTruckList foodTruckList = (FoodTruckList) model;
+                ImageView imageView = v.findViewById(R.id.foodTruckImage);
+                TextView title= v.findViewById(R.id.foodTruckTitle);
+                TextView subTitle= v.findViewById(R.id.foodTruckSubTitle);
+                TextView description= v.findViewById(R.id.foodTruckDescription);
+
+                title.setText(foodTruckList.getTitle());
+                subTitle.setText(foodTruckList.getSubTitle());
+                description.setText(foodTruckList.getDescription());
+                Picasso.get().load(foodTruckList.getImageUrl()).into(imageView);
+            }
+        };
+
+        listView.setAdapter(adapter);
 
     }
 
     // Hide Navigation Drawer on Pause
     @Override
     protected void onPause() {
-//        drawer.closeDrawers();
+        drawer.closeDrawers();
         super.onPause();
     }
 
@@ -149,12 +132,12 @@ public class FoodTruck extends AppCompatActivity {
 
     public void onStart(){
         super.onStart();
-//        adapter.startListening();
+        adapter.startListening();
     }
 
     public void onStop(){
         super.onStop();
-//        adapter.stopListening();
+        adapter.stopListening();
     }
 
 }

@@ -36,7 +36,6 @@ public class ScheduleEvent extends AppCompatActivity {
 
     ListView listView;
     FirebaseListAdapter adapter;
-    ScheduleEventList scheduleEventList;
     TextView categories;
 
     Toolbar toolbar;
@@ -94,8 +93,6 @@ public class ScheduleEvent extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.setDrawerIndicatorEnabled(true);
         toggle.syncState();
-
-        scheduleEventList = new ScheduleEventList();
 
         listView = (ListView)findViewById(R.id.listView);
 
