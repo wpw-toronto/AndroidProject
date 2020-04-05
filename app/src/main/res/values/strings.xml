@@ -10,4 +10,10 @@
     <string name="home_page_title">Walk with us</string>
     <string name="map_route_title">Map Route</string>
     <string name="event_map_title">Event Map</string>
+    <string name="donate_title">Donate Page</string>
+    <string name="donate_desc">Funds raised through World Partnership Walk go directly to
+      support AKFC’s development programs in Africa and Asia—
+      initiatives that improve access to quality education and health,
+      increase food security, create economic opportunities and
+      help millions of people unlock their potential to build a better life.</string>
 </resources>
