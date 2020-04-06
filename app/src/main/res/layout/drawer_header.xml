@@ -13,7 +13,7 @@
         android:layout_width="336dp"
         android:layout_height="28dp"
         android:layout_marginBottom="8dp"
-        android:text="lk311@gmail.com"
+        android:text="heons921@gmail.com"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
