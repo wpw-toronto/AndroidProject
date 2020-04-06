@@ -75,6 +75,9 @@ public class ScheduleEvent extends AppCompatActivity {
                 } else if(id == R.id.foodTruck){
                     Intent foodTruck = new Intent(ScheduleEvent.this, FoodTruck.class);
                     startActivity(foodTruck);
+                } else if(id == R.id.donate){
+                    Intent donate = new Intent(ScheduleEvent.this, Donate.class);
+                    startActivity(donate);
                 } else if(id == R.id.aboutUs){
                     Intent aboutUs = new Intent(ScheduleEvent.this, AboutUs.class);
                     startActivity(aboutUs);

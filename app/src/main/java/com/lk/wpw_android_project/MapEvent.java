@@ -67,6 +67,9 @@ public class MapEvent extends AppCompatActivity {
                 } else if(id == R.id.foodTruck){
                     Intent foodTruck = new Intent(MapEvent.this, FoodTruck.class);
                     startActivity(foodTruck);
+                } else if(id == R.id.donate){
+                    Intent donate = new Intent(MapEvent.this, Donate.class);
+                    startActivity(donate);
                 } else if(id == R.id.aboutUs){
                     Intent aboutUs = new Intent(MapEvent.this, AboutUs.class);
                     startActivity(aboutUs);

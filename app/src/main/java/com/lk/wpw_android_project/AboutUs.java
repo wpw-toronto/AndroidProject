@@ -59,6 +59,9 @@ public class AboutUs extends AppCompatActivity {
                 } else if(id == R.id.foodTruck){
                     Intent foodTruck = new Intent(AboutUs.this, FoodTruck.class);
                     startActivity(foodTruck);
+                } else if(id == R.id.donate){
+                    Intent donate = new Intent(AboutUs.this, Donate.class);
+                    startActivity(donate);
                 } else if(id == R.id.aboutUs){
                     drawer.closeDrawers();
                 } else if(id == R.id.signOut){

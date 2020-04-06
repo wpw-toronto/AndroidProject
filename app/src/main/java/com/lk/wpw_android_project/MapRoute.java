@@ -67,6 +67,9 @@ public class MapRoute extends AppCompatActivity {
                 } else if(id == R.id.foodTruck){
                     Intent foodTruck = new Intent(MapRoute.this, FoodTruck.class);
                     startActivity(foodTruck);
+                } else if(id == R.id.donate){
+                    Intent donate = new Intent(MapRoute.this, Donate.class);
+                    startActivity(donate);
                 } else if(id == R.id.aboutUs){
                     Intent aboutUs = new Intent(MapRoute.this, AboutUs.class);
                     startActivity(aboutUs);

@@ -67,6 +67,9 @@ public class FoodTruck extends AppCompatActivity {
                     startActivity(schedulePerformance);
                 } else if(id == R.id.foodTruck){
                     drawer.closeDrawers();
+                } else if(id == R.id.donate){
+                    Intent donate = new Intent(FoodTruck.this, Donate.class);
+                    startActivity(donate);
                 } else if(id == R.id.aboutUs){
                     Intent aboutUs = new Intent(FoodTruck.this, AboutUs.class);
                     startActivity(aboutUs);
